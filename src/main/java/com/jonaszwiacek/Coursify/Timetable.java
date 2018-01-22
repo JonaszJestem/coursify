@@ -31,6 +31,14 @@ public class Timetable {
         courseList.removeIf(course -> course.getCode().equalsIgnoreCase(code));
     }
 
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Courses: \n");

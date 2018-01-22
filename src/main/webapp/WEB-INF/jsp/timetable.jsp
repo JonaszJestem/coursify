@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Jonasz
@@ -41,7 +42,9 @@
         </table>
     </form:form>
 
-    ${timetable}
-
+    <p>Courses: </p>
+    <c:forEach var="entry" items="${timetable.courseList}">
+        <input type = "submit" value = "Remove"/> <c:out value="${entry.name}"/> <br />
+    </c:forEach>
 </body>
 </html>
