@@ -33,12 +33,4 @@ public class CourseTest {
         assertEquals("Wrong courses codes", timetable.getCourseCodes(), "");
         assertEquals("Wrong number of courses", timetable.getNumberOfCourses(), 0);
     }
-
-    @Test
-    public void shouldAllowToSetHoursToCourse() {
-        dummyCourse.setHours(10,30,12,00, 1);
-        assertTrue(dummyCourse.getStartTime().equals(new Time(10,30)));
-        assertTrue(dummyCourse.getEndTime().equals(new Time(12,00)));
-        assertTrue(dummyCourse.getDay() == 1);
-    }
 }

@@ -2,6 +2,7 @@ package com.jonaszwiacek.Coursify;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Timetable {
@@ -37,6 +38,10 @@ public class Timetable {
 
     public void setCourseList(List<Course> courseList) {
         this.courseList = courseList;
+    }
+
+    public Map<String, List<Course>> getCourseGroups() {
+        return this.getCourseList().stream().collect(Collectors.groupingBy(Course::getName));
     }
 
     @Override

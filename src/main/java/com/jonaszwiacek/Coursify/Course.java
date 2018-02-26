@@ -4,15 +4,18 @@ public class Course {
     String code;
     String name;
     CourseType type;
-    CourseHours hours;
+    int startHour;
+    int startMinutes;
+    int endHour;
+    int endMinutes;
     String lecturer;
-
+    Day day;
 
     public Course(String name, String type, String lecturer) {
         this.name = name;
         this.type = CourseType.valueOf(type);
         this.lecturer = lecturer;
-        this.code = code(name,type,lecturer);
+        code();
     }
 
     public Course(String code, String name, String type, String lecturer) {
@@ -26,9 +29,8 @@ public class Course {
 
     }
 
-    private String code(String name, String type, String lecturer) {
-        System.out.println("Coding...");
-        return name.trim().toLowerCase() + type + lecturer.trim().toLowerCase();
+    public void code() {
+        this.code = this.name.trim().toLowerCase() + this.type + this.lecturer.trim().toLowerCase();
     }
 
     public String getCode() {
@@ -63,24 +65,56 @@ public class Course {
         this.lecturer = lecturer;
     }
 
-    public Time getStartTime() {
-        return hours.startTime;
+    public int getStartHour() {
+        return startHour;
     }
 
-    public Time getEndTime() {
-        return hours.endTime;
+    public void setStartHour(int startHour) {
+        this.startHour = startHour;
     }
 
-    public void setHours(int startHour, int startMinutes, int endHour, int endMinutes, int day) {
-        this.hours = new CourseHours(startHour,startMinutes,endHour,endMinutes, day);
+    public int getStartMinutes() {
+        return startMinutes;
     }
 
-    public int getDay() {
-        return hours.getDay();
+    public void setStartMinutes(int startMinutes) {
+        this.startMinutes = startMinutes;
     }
 
+    public int getEndHour() {
+        return endHour;
+    }
+
+    public void setEndHour(int endHour) {
+        this.endHour = endHour;
+    }
+
+    public int getEndMinutes() {
+        return endMinutes;
+    }
+
+    public void setEndMinutes(int endMinutes) {
+        this.endMinutes = endMinutes;
+    }
+
+    public Day getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = Day.valueOf(day);
+    }
+/*
     @Override
     public String toString() {
         return this.code + " : " + this.name + " " + this.lecturer + "\n";
+    }
+*/
+    public String toString() {
+        return this.name;
+    }
+    public enum Day {
+        SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+        THURSDAY, FRIDAY, SATURDAY
     }
 }

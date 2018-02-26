@@ -1,0 +1,49 @@
+.container {
+    border: 1px solid gainsboro;
+    margin: auto;
+    padding: 10px;
+    width: 1004px;
+    height: 100%;
+    background: aliceblue;
+}
+
+.container::before {
+    opacity: 0.5;
+}
+
+.editPanel {
+    border: 1px solid gainsboro;
+    float: left;
+    margin: auto;
+    width: 400px;
+    background: beige;
+
+}
+
+.courses {
+    border: 1px solid gainsboro;
+    margin: auto;
+}
+.form {
+    border: 1px solid gainsboro;
+    margin: auto;
+}
+
+.timetable {
+    border: 1px solid gainsboro;
+    float: right;
+    margin: auto;
+    width: 600px;
+
+    background: beige;
+}
+
+.table, .table th, .table td {
+    margin: auto;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.table {
+    width: 600px;
+}

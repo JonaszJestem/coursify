@@ -1,0 +1,166 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/timetable.css" />
+    <title>Timetable</title>
+</head>
+<body>
+    <div class="container">
+        <div class="editPanel">
+                <form th:action="@{/timetable}" th:object="${course}" method="POST" class="form">
+                    <br/>
+                    <input type="text" id="c_name" name="c_name" th:field="*{name}"  th:placeholder="Course_name"/> <br/>
+
+                    <select id="c_type" name="c_type" th:field="*{type}" th:placeholder="Course_type">
+                        <option th:value = "LABORATORY" th:text = "Laboratory"></option>
+                        <option th:value = "LECTURE" th:text = "Lecture"></option>
+                        <option th:value = "PRACTICAL" th:text = "Practical"></option>
+                    </select>
+
+                    <input type="time" name="c_startHour" min="7:30" max="20:30" th:placeholder="Start_time" />
+                    <input type="time" name="c_endHour" min="9:00" max="21:30" th:placeholder="End_time" />
+
+                    <input type="text" id="c_lecturer" name="c_lecturer" th:field="*{lecturer}" th:placeholder="Lecturer"/> <br/>
+
+                    <select id="c_day" name="c_day" th:field="*{day}" th:placeholder="Course_day">
+                        <option th:each="day : ${days}" th:value="${day}" th:text="${day}"></option>
+                    </select>
+
+                    <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Add course" type="Submit" th:text="Add_course"></button>
+                </form>
+
+            <div class="courses">
+                <h3>Courses groups:</h3>
+                <th:block th:each="group : ${timetable.getCourseGroups()}">
+                    <p th:text = "${'Course: ' + group.key}"></p>
+                    <ul>
+                    <th:block th:each="course : ${group.value}">
+                        <form action="#" th:action="@{'/timetable/{id}'(id=${course.code})}" th:method="delete" >
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" id="submitButton">Remove</button>
+                            <li th:text = "${course.name + course.type}"></li>
+                        </form>
+                    </th:block>
+                    </ul>
+                </th:block>
+            </div>
+        </div>
+        <div class="timetable">
+            <table class="table">
+                <tr>
+                    <td class="blank"></td>
+                    <td class="title">Monday</td>
+                    <td class="title">Tuesday</td>
+                    <td class="title">Wednesday</td>
+                    <td class="title">Thursday</td>
+                    <td class="title">Friday</td>
+                </tr>
+                <tr>
+                    <td class="time">08:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">09:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">10:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">11:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">12:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">13:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">14:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">15:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">16:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">17:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">18:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">19:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+                <tr>
+                    <td class="time">20:00</td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                    <td class="free"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
